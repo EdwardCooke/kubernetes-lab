@@ -45,9 +45,9 @@ write_files:
 
     backend kubernetes-controlplane
         mode tcp
-        server kube1cp1 kube1cp1.k8s.lan:6443 check
-        server kube1cp2 kube1cp2.k8s.lan:6443 check
-        server kube1cp3 kube1cp3.k8s.lan:6443 check
+        server kube2cp1 kube2cp1.k8s.lan:6443 check
+        server kube2cp2 kube2cp2.k8s.lan:6443 check
+        server kube2cp3 kube2cp3.k8s.lan:6443 check
         timeout connect 5000
         timeout server  50000
 

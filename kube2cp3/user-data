@@ -1,0 +1,18 @@
+#cloud-config
+
+users:
+  - name: edward
+    gecos: Edward Cooke
+    ssh_authorized_keys:
+    - __authorizedkey__
+    sudo: ["ALL=(ALL) NOPASSWD:ALL"]
+    groups: sudo
+    shell: /bin/bash
+    passwd: $6$ZCyTJ6px$wRmt8SvGuMLr2GiFnGcHVD/viAVADapuwsUlhtYRw2c/nwHOT3KnTKRbPjGy8by0bj5bQn8U7scPn.jLpqL.h/
+    lock_passwd: false
+    
+timezone: US/Mountain
+package_upgrade: true
+packages:
+- ca-certificates
+    
