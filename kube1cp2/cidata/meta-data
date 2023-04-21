@@ -1,0 +1,4 @@
+#cloud-config
+
+instance-id: kube1cp2
+local-hostname: kube1cp2

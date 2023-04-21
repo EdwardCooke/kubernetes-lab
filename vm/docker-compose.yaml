@@ -1,0 +1,21 @@
+version: '3.9'
+services:
+  registry:
+    image: registry:2
+    ports:
+    - 443:443/tcp
+    restart: always
+    environment:
+    - REGISTRY_HTTP_ADDR=0.0.0.0:443
+    - REGISTRY_HTTP_TLS_CERTIFICATE=/certs/wildcard.crt
+    - REGISTRY_HTTP_TLS_KEY=/certs/wildcard.key
+    volumes:
+    - /opt/registry:/var/lib/registry
+    - /etc/ssl/private:/certs
+  apt:
+    image: nginx
+    ports:
+    - 80:80/tcp
+    restart: always
+    volumes:
+    - /opt/debmirror:/usr/share/nginx/html

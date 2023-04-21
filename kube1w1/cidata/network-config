@@ -1,0 +1,13 @@
+version: 2
+ethernets:
+  enp1s0:
+    dhcp4: false
+    dhcp6: false
+    addresses:
+    - 192.168.122.213/24
+    gateway4: 192.168.122.1
+    nameservers: 
+      search:
+      - k8s.lan
+      addresses:
+      - 192.168.122.254
