@@ -2,9 +2,8 @@
 sudo apt update
 
 echo "Building the certificates chain"
-pushd
-cd ..
-mkdir ca
+pushd ..
+mkdir -p ca
 openssl genrsa -out ca/ca.key 4096
 openssl req -x509 -new -nodes -key ca/ca.key -sha256 -days 3650 -out ca/ca.crt -subj '/CN=k8s.lan root/C=US/ST=Utah/L=West Jodan/O=k8s.lan'
 echo "[req]
@@ -71,8 +70,9 @@ echo \
     sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 sudo apt-get update
 sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+echo "Usermodding myself to docker"
 sudo usermod -a -G docker $(whoami)
-newgrp docker
+echo "Adding group to current session"
 
 echo "Setup the registry"
 sudo docker compose up -d
