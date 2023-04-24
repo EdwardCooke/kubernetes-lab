@@ -1,8 +1,8 @@
 #cloud-config
 
 users:
-  - name: edward
-    gecos: Edward Cooke
+  - name: lab
+    gecos: Lab
     ssh_authorized_keys:
       - __authorizedkey__
     sudo: ["ALL=(ALL) NOPASSWD:ALL"]

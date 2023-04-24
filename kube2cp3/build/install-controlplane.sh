@@ -53,12 +53,12 @@ apiVersion: kubeadm.k8s.io/v1beta3
 kind: JoinConfiguration
 discovery:
   bootstrapToken:
-    token: as68mi.ilqgn3l1ua3uw5s1
+    token: i1ztf1.4hrcg65lxoh66de4
     apiServerEndpoint: kube2.k8s.lan:6443
     caCertHashes:
-    - sha256:256ea9944919f4577152b26e1babaf593eafd67a00cf49678de33510b2a5ac81
+    - sha256:f87710f2b1ea5db3980eb05f4e548b2d3dd4040a5dba1d611e4fb9e6815ff33e
 controlPlane:
-  certificateKey: ec4569dcd72dc2bbcfa2d0be16550afb40e5d24ca567aa23a1a275ac42dbc692
+  certificateKey: f247ea3ac55db4a105069756960e0484a7dd72d421582c56915de6c5a66c71f1
 ' > /root/kubeadm-config.yaml
 
 echo "Joining to the Kubernetes cluster"

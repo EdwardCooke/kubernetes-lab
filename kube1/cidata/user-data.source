@@ -1,10 +1,10 @@
 #cloud-config
 
 users:
-  - name: edward
-    gecos: Edward Cooke
+  - name: lab
+    gecos: Lab
     ssh_authorized_keys:
-      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCofKhfs/97o8DBVkq3pSOZ8nzCVFy5fkTzFuk0W8gUc1zIVzHWxe18f9S2SFba7uf67pX9WAzuwQnp8TMIOixEV4zamtWVNeb7DklFPmnfMRXMizf/78nfEDFgYKyU5ats61NGBE/ooG2H5ytAx0abgPcaUhViGN38KqPJZDN8qEOzExEEjft8OroRsEoGhpWCu58Zd6nRc7/QpxrQ9TLHK4Kt6Ko0ZeANDF6gTeCqoMhcPXk0DVMM0kJWZJfYVnlbd+g/kBi+Ut/mZCskJSS+Y2OemVzWdD8UFfjEIGEaYvcICiwAoQ3qIGz9GX45Oday5Y0LIttJ3Iwaq/Xr4q2C76InsdzXUSVP5PXr08NqAbUn0aiB4W+WS5HoulyLQ8ZAGD39SEX7BSrT8Rj7HRWRDnqgR5tae7HaUG7gxmEupwbuh+4zgc7w/2orMYojWOhGgMQ7ThDem41b3KoQsTlYT1dTa9ilzIFZkzqEzImb5kqJARV1IRG4sSSqiKv4z38= edward@kubernetes
+    - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCofKhfs/97o8DBVkq3pSOZ8nzCVFy5fkTzFuk0W8gUc1zIVzHWxe18f9S2SFba7uf67pX9WAzuwQnp8TMIOixEV4zamtWVNeb7DklFPmnfMRXMizf/78nfEDFgYKyU5ats61NGBE/ooG2H5ytAx0abgPcaUhViGN38KqPJZDN8qEOzExEEjft8OroRsEoGhpWCu58Zd6nRc7/QpxrQ9TLHK4Kt6Ko0ZeANDF6gTeCqoMhcPXk0DVMM0kJWZJfYVnlbd+g/kBi+Ut/mZCskJSS+Y2OemVzWdD8UFfjEIGEaYvcICiwAoQ3qIGz9GX45Oday5Y0LIttJ3Iwaq/Xr4q2C76InsdzXUSVP5PXr08NqAbUn0aiB4W+WS5HoulyLQ8ZAGD39SEX7BSrT8Rj7HRWRDnqgR5tae7HaUG7gxmEupwbuh+4zgc7w/2orMYojWOhGgMQ7ThDem41b3KoQsTlYT1dTa9ilzIFZkzqEzImb5kqJARV1IRG4sSSqiKv4z38= edward@kubernetes
     sudo: ["ALL=(ALL) NOPASSWD:ALL"]
     groups: sudo
     shell: /bin/bash

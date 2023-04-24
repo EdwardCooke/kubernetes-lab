@@ -53,6 +53,8 @@ echo "Installing libvirt/kvm"
 sudo apt install -y libvirt-daemon-system virtinst
 (grep LIBVIRT ~/.bashrc > /dev/null) || (echo 'LIBVIRT_DEFAULT_URI="qemu:///system"' >> ~/.profile)
 echo vhost_net | sudo tee /etc/modules-load.d/vhost_net.conf
+sudo modprobe vhost_net
+virsh net-autostart default
 
 echo "Installing docker"
 sudo apt-get install -y \
@@ -133,7 +135,7 @@ ssh-keygen -f ~/.ssh/vm -N ""
 
 echo "
 Host *.k8s.lan
-    User edward
+    User ubuntu
     StrictHostKeyChecking no
     IdentityFile ~/.ssh/vm
 " > ~/.ssh/config

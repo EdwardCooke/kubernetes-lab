@@ -3,7 +3,7 @@
 echo '
 $ORIGIN .
 $TTL 300        ; 5 minutes
-122.168.192.in-addr.arpa  IN SOA  dns.k8s.lan. edward.veccsolutions.org. (
+122.168.192.in-addr.arpa  IN SOA  dns.k8s.lan. lab.k8s.lan. (
                                 1      ; serial
                                 604800     ; refresh (1 week)
                                 86400      ; retry (1 day)
@@ -33,7 +33,7 @@ $ORIGIN 122.168.192.in-addr.arpa.
 echo '
 $ORIGIN .
 $TTL 300        ; 5 minutes
-k8s.lan                 IN SOA  dns.k8s.lan. edward.frakkingsweet.com. (
+k8s.lan                 IN SOA  dns.k8s.lan. lab.k8s.lan. (
                                 1          ; serial
                                 60         ; refresh (1 minute)
                                 60         ; retry (1 minute)
