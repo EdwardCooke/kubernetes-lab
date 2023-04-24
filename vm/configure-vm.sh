@@ -48,6 +48,9 @@ sudo cp ca/wildcard.key /etc/ssl/private
 sudo update-ca-certificates
 popd
 
+echo "Installing cloud-init"
+sudo apt install -y cloud-init
+
 echo "Installing libvirt/kvm"
 sudo apt install -y libvirt-daemon-system virtinst
 (grep LIBVIRT ~/.bashrc > /dev/null) || (echo 'LIBVIRT_DEFAULT_URI="qemu:///system"' >> ~/.profile)
@@ -114,6 +117,7 @@ debmirror /opt/debmirror/kubernetes \
     --rsync-extra=none \
     --ignore-release-gpg
 
+echo "127.0.1.1 kubernetes.k8s.lan" | sudo tee -a /etc/hosts
 
 # load kubernetes images
 sudo curl -fsSLo /etc/apt/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
@@ -130,7 +134,7 @@ done
 
 # Configure ssh key
 mkdir ~/.ssh
-chmod 0600 ~/.ssh
+chmod 750 ~/.ssh
 ssh-keygen -f ~/.ssh/vm -N ""
 
 echo "
@@ -138,7 +142,9 @@ Host *.k8s.lan
     User ubuntu
     StrictHostKeyChecking no
     IdentityFile ~/.ssh/vm
-" > ~/.ssh/config
+" | sudo tee -a ~/.ssh/config
 
 echo "Download the jammy iso"
-curl https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64-disk-kvm.img --output jammy-server-cloudimg-amd64.img
+sudo mkdir /opt/vms
+sudo chmod 777 -R /opt/vms
+curl https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64.img --output /opt/vms/jammy-server-cloudimg-amd64.img
