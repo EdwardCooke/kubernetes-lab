@@ -109,3 +109,4 @@ options {
 ' > /etc/bind/named.conf.options
 
 systemctl restart named
+touch /home/built
