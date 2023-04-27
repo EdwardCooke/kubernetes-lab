@@ -1,5 +1,6 @@
 #!/bin/bash
 sudo apt update
+sudo apt upgrade -y
 
 echo "Building the certificates chain"
 pushd ..
@@ -52,7 +53,7 @@ echo "Installing cloud-init"
 sudo apt install -y cloud-init
 
 echo "Installing libvirt/kvm"
-sudo apt install -y qemu-kvm libvirt-dev bridge-utils libvirt-daemon-system libvirt-daemon virtinst bridge-utils libosinfo-bin libguestfs-tools virt-top
+sudo apt install -y genisoimage qemu-kvm libvirt-dev bridge-utils libvirt-daemon-system libvirt-daemon virtinst bridge-utils libosinfo-bin libguestfs-tools virt-top
 (grep LIBVIRT ~/.bashrc > /dev/null) || (echo 'LIBVIRT_DEFAULT_URI="qemu:///system"' >> ~/.profile)
 echo vhost_net | sudo tee /etc/modules-load.d/vhost_net.conf
 sudo modprobe vhost_net
