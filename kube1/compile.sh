@@ -1,7 +1,7 @@
 #!/bin/bash
 
 mkdir -p build
-
+mkdir -p cidata
 echo "#!/bin/bash
 
 echo '$(cat ../ca/ca.crt)' > /usr/local/share/ca-certificates/k8slan.crt

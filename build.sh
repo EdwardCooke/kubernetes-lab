@@ -12,7 +12,7 @@ echo Creating vm directory
 sudo mkdir -p /opt/vms/$1
 [ -f /opt/vms/$1/cidata.iso ] && sudo rm /opt/vms/$1/cidata.iso
 [ -f compile.sh ] && ./compile.sh
-sudo chmod 777 -R /opt/vms/dns
+sudo chmod 777 -R /opt/vms/$1
 qemu-img create -b ../jammy-server-cloudimg-amd64.img -f qcow2 -F qcow2 /opt/vms/$1/$1.img 50G
 genisoimage -output /opt/vms/$1/cidata.iso -V cidata -r -J cidata/*
 virt-install --name=$1 \

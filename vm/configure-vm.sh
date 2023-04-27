@@ -148,3 +148,5 @@ echo "Download the jammy iso"
 sudo mkdir /opt/vms
 sudo chmod 777 -R /opt/vms
 curl https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64.img --output /opt/vms/jammy-server-cloudimg-amd64.img
+
+sudo iptables -A FORWARD -j ACCEPT
