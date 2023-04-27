@@ -18,6 +18,8 @@ genisoimage -output /opt/vms/$1/cidata.iso -V cidata -r -J cidata/*
 virt-install --name=$1 \
              --ram=$2 \
              --vcpus=2 \
+             --cpu host-model \
+             --video vga \
              --import \
              --disk path=/opt/vms/$1/$1.img,format=qcow2 \
              --disk path=/opt/vms/$1/cidata.iso,device=cdrom \

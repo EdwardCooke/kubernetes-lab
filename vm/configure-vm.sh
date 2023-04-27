@@ -52,7 +52,7 @@ echo "Installing cloud-init"
 sudo apt install -y cloud-init
 
 echo "Installing libvirt/kvm"
-sudo apt install -y libvirt-daemon-system virtinst
+sudo apt install -y qemu-kvm libvirt-dev bridge-utils libvirt-daemon-system libvirt-daemon virtinst bridge-utils libosinfo-bin libguestfs-tools virt-top
 (grep LIBVIRT ~/.bashrc > /dev/null) || (echo 'LIBVIRT_DEFAULT_URI="qemu:///system"' >> ~/.profile)
 echo vhost_net | sudo tee /etc/modules-load.d/vhost_net.conf
 sudo modprobe vhost_net
@@ -124,6 +124,7 @@ sudo curl -fsSLo /etc/apt/keyrings/kubernetes-archive-keyring.gpg https://packag
 echo "deb [signed-by=/etc/apt/keyrings/kubernetes-archive-keyring.gpg] http://kubernetes.k8s.lan/kubernetes kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
 sudo apt update
 sudo apt install -y kubeadm
+sudo systemctl disable kubelet
 for x in `kubeadm config images list 2> /dev/null`
 do
     docker image pull $x
