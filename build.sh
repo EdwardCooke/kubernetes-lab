@@ -23,7 +23,7 @@ virt-install --name=$1 \
              --import \
              --disk path=/opt/vms/$1/$1.img,format=qcow2 \
              --disk path=/opt/vms/$1/cidata.iso,device=cdrom \
-             --os-variant=ubuntu20.10 \
+             --os-variant=ubuntu20.04 \
              --network network=default,model=virtio \
              --graphics vnc,listen=0.0.0.0 \
              --noautoconsole
