@@ -102,7 +102,17 @@ debmirror /opt/debmirror/docker \
     --rsync-extra=none \
     --ignore-release-gpg
 
-echo "Pull the kubernetes ubuntu repository"
+KUBEVER=`curl \
+        https://apt.kubernetes.io//dists/kubernetes-xenial/main/binary-amd64/Packages.gz -L --output - \
+        | zcat \
+        | grep -A 1 -B 0 "Package: kubelet" \
+        | grep Version \
+        | sed 's/Version: //' \
+        | tail -1 \
+        | sed 's/\./\\\./g'
+
+
+echo "Pull the kubernetes ubuntu repository, version $KUBEVER"
 debmirror /opt/debmirror/kubernetes \
     --nosource \
     --host=apt.kubernetes.io \
@@ -116,6 +126,8 @@ debmirror /opt/debmirror/kubernetes \
     --method=https \
     --progress \
     --rsync-extra=none \
+    --exclude-field=Version=.* \
+    --include-field=Version=.*$KUBEVER.* \
     --ignore-release-gpg
 
 echo "127.0.1.1 kubernetes.k8s.lan" | sudo tee -a /etc/hosts
