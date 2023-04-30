@@ -141,7 +141,7 @@ ssh-keygen -f ~/.ssh/vm -N ""
 
 echo "
 Host *.k8s.lan
-    User ubuntu
+    User lab
     StrictHostKeyChecking no
     IdentityFile ~/.ssh/vm
 " | sudo tee -a ~/.ssh/config
@@ -152,3 +152,5 @@ sudo chmod 777 -R /opt/vms
 curl https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64.img --output /opt/vms/jammy-server-cloudimg-amd64.img
 
 sudo iptables -A FORWARD -j ACCEPT
+echo "net.ipv4.ip_forward = 1" | sudo tee /etc/sysctl.d/10-kuberneteslab.conf > /dev/null
+echo "1" | sudo tee /proc/sys/net/ipv4/ip_forward > /dev/null
