@@ -171,3 +171,13 @@ curl https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64.i
 sudo iptables -A FORWARD -j ACCEPT
 echo "net.ipv4.ip_forward = 1" | sudo tee /etc/sysctl.d/10-kuberneteslab.conf > /dev/null
 echo "1" | sudo tee /proc/sys/net/ipv4/ip_forward > /dev/null
+
+echo "Installing helm"
+curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+
+echo "Installing kustomize"
+curl https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh | sudo bash /dev/stdin /usr/bin
+
+echo "Adding bash completions"
+kubectl completion bash | sudo tee /usr/share/bash-completion/completions/kubectl > /dev/null
+helm completion bash | sudo tee /usr/share/bash-completion/completion/helm > /dev/null
