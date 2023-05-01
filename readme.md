@@ -68,10 +68,15 @@ cd kubernetes-lab/vm
 Once the initial setup is complete, set the DNS server for your host machine to `192.168.122.254`. Internet will only work while the dns server is up, but you will be able to resolve the clusters and cluster servers.
 
 ## Cluster creation
-Execute `start.sh` from the root of the repsitory. This will create all necessary VM's.
+Execute `create.sh` from the root of the repsitory. This will create all necessary VM's.
 
 ## Cluster teardown
-Execute `stop.sh` from the root of the repository. This will delete all VM's.
+Execute `destroy.sh` from the root of the repository. This will delete all VM's.
+
+## Suspend/resume cluster
+Execute `stop.sh` to cleanly shutdown the cluster
+
+Execute `start.sh` to start the cluster
 
 ## Individual machine creation
 Execute `build.sh <machine> <memory>` to build an individual machine, you can get the recommended memory amounts from `start.sh`.
