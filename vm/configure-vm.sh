@@ -179,5 +179,15 @@ echo "Installing kustomize"
 curl https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh | sudo bash /dev/stdin /usr/bin
 
 echo "Adding bash completions"
-kubectl completion bash | sudo tee /usr/share/bash-completion/completions/kubectl > /dev/null
-helm completion bash | sudo tee /usr/share/bash-completion/completion/helm > /dev/null
+COMPDIR=$(pkg-config --variable=completionsdir bash-completion)
+kubectl completion bash | sudo tee $COMPDIR/kubectl > /dev/null
+helm completion bash | sudo tee $COMPDIR/helm > /dev/null
+
+echo "Installing kubectx and kubens"
+git clone https://github.com/ahmetb/kubectx kubectx
+sudo cp kubectx/kubectx /usr/local/bin
+sudo cp kubectx/kubens /usr/local/bin
+sudo cp kubectx/completion/kubens.bash $COMPDIR/kubens
+sudo cp kubectx/completion/kubectx.bash $COMPDIR/kubectx
+rm -rf kubectx
+
