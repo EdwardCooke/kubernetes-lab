@@ -20,6 +20,7 @@ trap - SIGINT
 echo Grabbing the kubernetes config file
 mkdir -p ~/.kube
 ssh kube1cp1.k8s.lan "cat /home/kube.config" > ~/.kube/kube1.config 2> /dev/null
+sed -i 's/kubernetes-admin/kubernetes-admin-kube1/' ~/.kube/kube1.config
 cp ~/.kube/kube1.config ~/.kube/config
 
 echo "Installing calico"

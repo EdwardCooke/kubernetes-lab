@@ -20,8 +20,12 @@ trap - SIGINT
 echo Grabbing the kubernetes config file
 mkdir -p ~/.kube
 ssh kube2cp1.k8s.lan "cat /home/kube.config" > ~/.kube/kube2.config 2> /dev/null
+sed -i 's/kubernetes-admin/kubernetes-admin-kube2/' ~/.kube/kube2.config
 cp ~/.kube/kube2.config ~/.kube/config
 
 echo "Installing calico"
 kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.25.1/manifests/calico.yaml
 sleep 10
+
+echo "Combining kube config files"
+KUBECONFIG=~/.kube/kube2.config:~/.kube/kube1.config kubectl config view --flatten > ~/.kube/config
