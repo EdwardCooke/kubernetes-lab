@@ -11,42 +11,4 @@ virsh destroy kube2cp1
 virsh destroy kube2cp2
 virsh destroy kube2cp3
 virsh destroy kube2w1
-
-virsh undefine dns  
-virsh undefine kube1
-virsh undefine kube2
-virsh undefine kube1cp1
-virsh undefine kube1cp2
-virsh undefine kube1cp3
-virsh undefine kube1w1
-virsh undefine kube1w2
-virsh undefine kube2cp1
-virsh undefine kube2cp2
-virsh undefine kube2cp3
-virsh undefine kube2w1
-
-virsh pool-destroy dns  
-virsh pool-destroy kube1
-virsh pool-destroy kube2
-virsh pool-destroy kube1cp1
-virsh pool-destroy kube1cp2
-virsh pool-destroy kube1cp3
-virsh pool-destroy kube1w1
-virsh pool-destroy kube1w2
-virsh pool-destroy kube2cp1
-virsh pool-destroy kube2cp2
-virsh pool-destroy kube2cp3
-virsh pool-destroy kube2w1
-
-virsh pool-undefine dns  
-virsh pool-undefine kube1
-virsh pool-undefine kube2
-virsh pool-undefine kube1cp1
-virsh pool-undefine kube1cp2
-virsh pool-undefine kube1cp3
-virsh pool-undefine kube1w1
-virsh pool-undefine kube1w2
-virsh pool-undefine kube2cp1
-virsh pool-undefine kube2cp2
-virsh pool-undefine kube2cp3
-virsh pool-undefine kube2w1
+virsh destroy kube2w2

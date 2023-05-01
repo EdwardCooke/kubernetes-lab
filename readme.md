@@ -48,10 +48,11 @@ You will need `git` installed. `sudo apt install -y git`
 
 I highly recommend using Ubuntu 20.04 and NOT 22.04. There is some significant performance penalties when using 22.04 with using nested virtualization The difference is in the order of about a minute and a half per vm boot, and about half-hour to hour to install each role on virtual machine.
 
-To enable the virtualization extensions, execute the following in an admin PowerShell window. Replace `kube-lab` with the name of your virtual machine in Hyper-V Manager.
+To enable the virtualization extensions and change the screen resolution of the VM, execute the following in an admin PowerShell window. Replace `kube-lab` with the name of your virtual machine in Hyper-V Manager.
 
 ```powershell
 Set-VMProcessor -VMName "kube-lab" -ExposeVirtualizationExtensions $true
+Set-VMVideo -VMName "kube-lab" -HorizontalResolution 2000 -VerticalResolution 1500 -ResolutionType Single
 ```
 
 ## Quick start
@@ -78,9 +79,9 @@ Execute `build.sh <machine> <memory>` to build an individual machine, you can ge
 Example: `build.sh dns 512`
 
 # Timings
-On a machine with a VM with 12 cores from a 12900K, 50 gigs of ram and 128 gig disk with 1200Mb/s internet
-* `configure-vm.sh` - `~40 minutes`
-* `start.sh` - `~5-10 minutes`
+On a machine with a VM with 10 cores from a 12900HK, 50 gigs of ram and 128 gig disk with 1200Mb/s internet
+* `configure-vm.sh` - `~10-15 minutes`
+* `start.sh` - `~20-30 minutes`
 * `stop.sh` - `~5 seconds`
 
 # Recommended, but not required advanced use cases and configuration

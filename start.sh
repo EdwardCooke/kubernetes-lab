@@ -1,32 +1,14 @@
 #!/bin/bash
-
-echo "Building dns"
-./build.sh dns 512
-
-echo "Building kube1"
-./build.sh kube1 512
-
-echo "Building kube2"
-./build.sh kube2 512
-
-echo "Building kube1cp1"
-./build.sh kube1cp1 4096
-echo "Building kube1cp2"
-./build.sh kube1cp2 4096
-echo "Building kube1cp3"
-./build.sh kube1cp3 4096
-echo "Building kube1w1"
-./build.sh kube1w1 4096
-echo "Building kube1w2"
-./build.sh kube1w2 4096
-
-echo "Building kube2cp1"
-./build.sh kube2cp1 4096
-echo "Building kube2cp2"
-./build.sh kube2cp2 4096
-echo "Building kube2cp3"
-./build.sh kube2cp3 4096
-echo "Building kube2w1"
-./build.sh kube2w1 4096
-echo "Building kube2w2"
-./build.sh kube2w2 4096
+virsh start dns  
+virsh start kube1
+virsh start kube2
+virsh start kube1cp1
+virsh start kube1cp2
+virsh start kube1cp3
+virsh start kube1w1
+virsh start kube1w2
+virsh start kube2cp1
+virsh start kube2cp2
+virsh start kube2cp3
+virsh start kube2w1
+virsh start kube2w2
