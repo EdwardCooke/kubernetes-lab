@@ -22,8 +22,6 @@ echo "Building kube1w2"
 
 echo "Building kube2cp1"
 ./build.sh kube2cp1 4096
-echo "Sleeping for 45 seconds for Kubernetes to finalize"
-sleep 45
 echo "Building kube2cp2"
 ./build.sh kube2cp2 4096
 echo "Building kube2cp3"
