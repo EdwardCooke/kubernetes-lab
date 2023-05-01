@@ -57,7 +57,7 @@ sudo apt install -y genisoimage qemu-kvm libvirt-dev bridge-utils libvirt-daemon
 (grep LIBVIRT ~/.bashrc > /dev/null) || (echo 'LIBVIRT_DEFAULT_URI="qemu:///system"' >> ~/.profile)
 echo vhost_net | sudo tee /etc/modules-load.d/vhost_net.conf
 sudo modprobe vhost_net
-virsh net-autostart default
+sudo virsh -c qemu:///system net-autostart default
 
 echo "Installing docker"
 sudo apt-get install -y \
@@ -109,7 +109,7 @@ KUBEVER=`curl \
         | grep Version \
         | sed 's/Version: //' \
         | tail -1 \
-        | sed 's/\./\\\./g'
+        | sed 's/\./\\\./g'`
 
 
 echo "Pull the kubernetes ubuntu repository, version $KUBEVER"
@@ -126,6 +126,7 @@ debmirror /opt/debmirror/kubernetes \
     --method=https \
     --progress \
     --rsync-extra=none \
+    --include-field 'Package=(kubernetes-cni)|(cri-tools)' \
     --exclude-field=Version=.* \
     --include-field=Version=.*$KUBEVER.* \
     --ignore-release-gpg
@@ -140,10 +141,10 @@ sudo apt install -y kubeadm
 sudo systemctl disable kubelet
 for x in `kubeadm config images list 2> /dev/null`
 do
-    docker image pull $x
+    sudo docker image pull $x
     NEWTAG=`echo $x | sed 's/registry.k8s.io/kubernetes.k8s.lan/'`
-    docker image tag $x $NEWTAG
-    docker image push $NEWTAG
+    sudo docker image tag $x $NEWTAG
+    sudo docker image push $NEWTAG
 done
 
 # Configure ssh key
@@ -152,6 +153,10 @@ chmod 750 ~/.ssh
 ssh-keygen -f ~/.ssh/vm -N ""
 
 echo "
+Host 192.168.122.254
+    User lab
+    StrictHostKeyChecking no
+    IdentityFile ~/.ssh/vm
 Host *.k8s.lan
     User lab
     StrictHostKeyChecking no
