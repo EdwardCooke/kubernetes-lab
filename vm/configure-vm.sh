@@ -15,6 +15,9 @@ echo vhost_net | sudo tee /etc/modules-load.d/vhost_net.conf
 sudo modprobe vhost_net
 sudo virsh -c qemu:///system net-autostart default
 
+echo "Installing bind"
+sudo apt install -y bind
+
 echo "Installing docker"
 sudo apt-get install -y \
     ca-certificates \
