@@ -10,4 +10,4 @@ ethernets:
       search:
       - k8s.lan
       addresses:
-      - 192.168.0.190
+      - 192.168.122.1
