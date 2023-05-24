@@ -90,7 +90,7 @@ debmirror /opt/debmirror/kubernetes \
 echo "127.0.1.1 kubernetes.k8s.lan" | sudo tee -a /etc/hosts
 
 # load kubernetes images
-sudo curl -fsSLo /etc/apt/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
+curl -fsSL https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-archive-keyring.gpg
 echo "deb [signed-by=/etc/apt/keyrings/kubernetes-archive-keyring.gpg] http://kubernetes.k8s.lan/kubernetes kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
 sudo apt update
 sudo apt install -y kubeadm
