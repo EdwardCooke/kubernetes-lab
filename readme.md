@@ -67,6 +67,8 @@ cd kubernetes-lab/vm
 
 Once the initial setup is complete, set the DNS server for your host machine to `192.168.122.254`. Internet will only work while the dns server is up, but you will be able to resolve the clusters and cluster servers.
 
+You will also want to restart your lab VM.
+
 ## Cluster creation
 Execute `create.sh` from the root of the repsitory. This will create all necessary VM's.
 
