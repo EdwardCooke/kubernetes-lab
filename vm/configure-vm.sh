@@ -16,7 +16,7 @@ sudo modprobe vhost_net
 sudo virsh -c qemu:///system net-autostart default
 
 echo "Installing bind"
-sudo apt install -y bind
+sudo apt install -y bind9
 
 echo "Installing docker"
 sudo apt-get install -y \
