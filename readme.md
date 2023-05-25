@@ -40,7 +40,7 @@ The minimum requirements for this lab is about 50 gigs of memory, 100gigs of dis
 
 I recommend your base VM be a desktop install, that way you can browse the cluster sites easily. Ubuntu 20.04 Desktop has been tested extensively with these scripts.
 
-Set up your sudo to run without a password required for all users `cat "$(whoami) ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/nopass`
+Set up your sudo to run without a password required for all users `echo "$(whoami) ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/nopass`
 
 You will need `git` installed. `sudo apt install -y git`
 
